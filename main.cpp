@@ -1,16 +1,18 @@
 #include <iostream>
 #include <string>
-#include <algorithm>		 												//Proje Prototip
+#include <algorithm>		 												
 #include <vector>
 
 using namespace std;
 
+//Kucuk fonksiyonun dongurdugu degiskenin classi.
 class donen{
 	public:
 		int index;
-		int deger;							
+		int deger;				
 };
 
+//Vector icerisinde secilen elemanın bulunup bulunmadigini kontrol eden fonksiyon.
 bool bulunuyormu(vector<int> x,int y){
 	for(int i=0;i<x.size();++i){
 		if(y==x[i]){
@@ -19,14 +21,14 @@ bool bulunuyormu(vector<int> x,int y){
 	}
 	return false;
 }
-
+//Vectoru yazdiran fonksiyon.
 void yazdir(vector<int> x){
 	cout<<"\n";
 	for(int i = 0; i<x.size();++i){
 		cout<<x[i]<<"\t";
 	}
 }
-
+//Vectorde girilen degerden kucuk deger varmi diye bakan fonksiyon.
 bool buyukmu(vector<int> x,char k[],int y){
 	for(int i =0;i<x.size();++i){
 		if(k[x[i]]<y){
@@ -35,7 +37,7 @@ bool buyukmu(vector<int> x,char k[],int y){
 	}
 	return false;
 }
-
+//Vectorun icerisinden en kucuk degeri donduren fonksiyon.
 donen kucuk(vector<int> x, char k[]){
 	int j = 5000;
 	donen y;
@@ -48,7 +50,7 @@ donen kucuk(vector<int> x, char k[]){
 	}
 	return y;
 }
-
+//Dizi yazdiran fonksiyon.
 void yazdirKelime(char k[],int x){
 	cout<<"\n";
 	for(int i=0;i<x;++i){
@@ -56,7 +58,7 @@ void yazdirKelime(char k[],int x){
 	}
 	
 }
-
+//Degismesi gereken harfleri secen fonksiyon.
 void karakterSecme(char k[], int x, int y){
 	int z=0,point1,point2,point3,flag=0,deger,flag2=0;
 	char k3[x];
@@ -65,13 +67,14 @@ void karakterSecme(char k[], int x, int y){
 	for(int i =0;i<x;++i){
 		for(int j=i+1;j<x;++j)  { 
 			if(k[i]>k[j]) { 
-				flag = 1; 
-			} 
-		} 
+				flag = 1;	//Kelimenin sirali olup olmadigini kontrol ediyor.
+			} 		
+		} 				
      }
 	   
-    if(flag==0) { cout << "Kelime Mukkemmel Halde"; return; }
+    if(flag==0) { cout << "Kelime Mukkemmel Halde"; return; }//Siraliysa fonksiyon bitiyor.
     
+    //Ikili harf degisimi yapan kisim.
 	for(int i=0;i<x;++i){
 	 	if(y<2) { break; }
 	 	if(bulunuyormu(secilenler,i)) { continue; }
@@ -85,7 +88,7 @@ void karakterSecme(char k[], int x, int y){
 	 			deger = k[j];
 	 			point2 = j;
 	 			flag=1;
-				}
+				}						
 			if(deger==k[j]&&flag==1){
 				deger = k[j];
 				point2 = j;
@@ -117,7 +120,8 @@ void karakterSecme(char k[], int x, int y){
 
 	 flag = 0;
 	 flag2 = 0;
-	 
+	 //2'li harf degisimi bittikten sonra hala secilmesi gereken eleman varsa-
+	 //En iyi sonucu vericek sekilde eleman secen kisim.
 	 while(y>0){
 	 	if(flag==0){
 			for(int  i =point1+1; i<x;++i){
@@ -166,7 +170,7 @@ void karakterSecme(char k[], int x, int y){
 	   }
 	   flag2=0;  
 	}
-		
+	//Secilen elemanlari en iyi sekilde yerine koyan kisim.
 	for(int i=0;i<x;++i){
 		if(secilenler.size()<1){ break; }
 		if(k3[i]==' '){
@@ -198,4 +202,3 @@ int main() {
 	karakterSecme(kelime,uzunluk,K);	
 	return 0;
 }
-
