@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//Kucuk fonksiyonun dongurdugu degiskenin classi.
+//Kucuk fonksiyonun dongurdugu degisgenin classi.
 class donen{
 	public:
 		int index;
